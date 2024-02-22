@@ -1,0 +1,7 @@
+apiVersion: tekton.dev/v1
+kind: TaskRun
+metadata:
+  name: hellov1
+spec:
+  taskRef:
+    name: hellov1
