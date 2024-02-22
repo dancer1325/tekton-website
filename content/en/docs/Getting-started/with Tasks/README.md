@@ -17,8 +17,8 @@
 
 # Goal
 * Install Tekton Pipelines
-* Create a Task
-* `TaskRun` to instantiate & run the Task
+* Create a `Task`
+* `TaskRun` to instantiate & run the previous `Task`
 
 # Steps
 * Install Tekton Pipelines
