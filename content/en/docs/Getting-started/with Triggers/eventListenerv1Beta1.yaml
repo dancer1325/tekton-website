@@ -1,0 +1,12 @@
+apiVersion: triggers.tekton.dev/v1beta1
+kind: EventListener
+metadata:
+  name: hello-listener-v1beta1
+spec:
+  serviceAccountName: tekton-robot-v1beta1
+  triggers:
+    - name: hello-trigger-v1beta1
+      bindings:
+        - ref: hello-binding-v1beta1
+      template:
+        ref: hello-template-v1beta1

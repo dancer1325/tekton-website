@@ -1,0 +1,19 @@
+apiVersion: triggers.tekton.dev/v1beta1
+kind: TriggerTemplate
+metadata:
+  name: hello-template-v1beta1
+spec:
+  params:
+    - name: username
+      default: "Kubernetes v1beta1"
+  resourcetemplates:
+    - apiVersion: tekton.dev/v1beta1
+      kind: PipelineRun
+      metadata:
+        generateName: triggertemplatev1beta-run-
+      spec:
+        pipelineRef:
+          name: hello-goodbyev1beta1
+        params:
+          - name: username
+            value: $(tt.params.username)    # tt    == triggerTemplate

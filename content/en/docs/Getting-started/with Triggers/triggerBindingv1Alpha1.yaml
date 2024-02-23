@@ -1,0 +1,8 @@
+apiVersion: triggers.tekton.dev/v1alpha1
+kind: TriggerBinding
+metadata:
+  name: hello-binding-v1alpha1
+spec:
+  params:
+    - name: username
+      value: $(body.username)   # body      comes from the event payload
