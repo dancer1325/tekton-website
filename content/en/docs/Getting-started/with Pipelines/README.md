@@ -26,7 +26,7 @@
 * Create the second task
   * `kubectl apply -f task2v1.yaml` or `kubectl apply -f task2v1Beta1.yaml` 
     * `kubectl get task` to check that the tasks have been created
-    * `kubectl get pods` to check the Tasks create an associated Pod
+    * `kubectl get pods` to check that there is NOT yet an associated Pod / Task
 * Create the pipelines
   * `kubectl apply -f pipelinev1.yaml` or `kubectl apply -f pipelinev1Beta1.yaml`
     * `kubectl get pipelines` to check the existance of the pipeline
