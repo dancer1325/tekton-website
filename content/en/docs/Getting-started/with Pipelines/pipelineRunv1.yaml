@@ -1,0 +1,10 @@
+apiVersion: tekton.dev/v1
+kind: PipelineRun
+metadata:
+  name: hello-goodbye-run
+spec:
+  pipelineRef:
+    name: hello-goodbyev1
+  params:
+    - name: username
+      value: "Tekton"
