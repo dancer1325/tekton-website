@@ -29,8 +29,9 @@
 * Create a task
   * `kubectl apply -f taskv1.yaml` or `kubectl apply -f taskv1Beta1.yaml` 
     * `kubectl get task` to check that the tasks have been created
-    * `kubectl get pods` to check the Tasks create an associated Pod
+    * `kubectl get pods` to check the there is NOT yet an associated Pod / Task
 * Create a taskRun
   * `kubectl apply -f taskRunv1.yaml` or `kubectl apply -f taskRunv1Beta1.yaml`
     * `kubectl get taskrun` or `kubectl describe taskrun taskRunName` to check that the taskRuns have been created
+    * `kubectl get pods` to check the there is an associated Pod / Task created!!
     * `kubectl logs taskName-pod` to check the logs thrown by the Task
