@@ -6,6 +6,10 @@
 * [Via Docker Desktop](https://github.com/tektoncd/pipeline/blob/main/docs/developers/local-setup.md#using-docker-desktop)
 * [Via Minikube](https://github.com/tektoncd/pipeline/blob/main/docs/developers/local-setup.md#using-minikube)
 * [Via Kind](https://github.com/tektoncd/pipeline/blob/main/docs/developers/local-setup.md#using-minikube)
+  * Notes
+    * Note1: If you use Rancher or Colina -> Not install via brew, since you need <=v0.19.0 [Reason](https://github.com/kubernetes-sigs/kind/issues/3277). 
+      * Install [Go](https://go.dev/doc/install) & 
+      * `go install sigs.k8s.io/kind@v0.19.0`
 
 # Kind + Scripts to run Tekton components
 * 'tekton_in_kind.sh'
