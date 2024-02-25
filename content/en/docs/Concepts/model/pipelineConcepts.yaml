@@ -1,0 +1,83 @@
+apiVersion: tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: hello
+spec:
+  steps:
+    - name: echo
+      image: alpine:latest    # container image
+      script: |
+        #!/bin/sh
+        echo "Hello"
+        sleep "3600"
+# if we do NOT comment this line -> pod related will be live forever -> next Task or step waiting for complete it, do NOT start ever
+
+
+---
+apiVersion: tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: intermediate
+spec:
+  params:
+    - name: username
+      type: string
+  steps:
+    - name: echo
+      image: alpine:latest    # container image
+      script: |
+        #!/bin/sh
+        echo "Intermediate $(params.username)"
+#        sleep "3600"
+# if we do NOT comment this line -> pod related will be live forever -> next Task or step waiting for complete it, do NOT start ever
+
+
+---
+apiVersion: tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: bye
+spec:
+  steps:
+    - name: echo
+      image: alpine:latest    # container image
+      script: |
+        #!/bin/sh
+        echo "Bye"
+        sleep "3600"
+
+---
+apiVersion: tekton.dev/v1beta1
+kind: Pipeline
+metadata:
+  name: pipeline-concept
+spec:
+  params:
+    - name: username
+      type: string
+  tasks:
+    - name: hello
+      taskRef:
+        name: hello
+    - name: intermediate
+      taskRef:
+        name: intermediate
+      params:
+        - name: username
+          value: $(params.username)
+    - name: bye
+      runAfter:
+        - intermediate
+      taskRef:
+        name: bye
+---
+apiVersion: tekton.dev/v1beta1
+kind: PipelineRun
+metadata:
+  name: pipeline-concept
+spec:
+  params:
+    - name: username
+      value: "Alfred"
+  pipelineRef:
+    name: pipeline-concept

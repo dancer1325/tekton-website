@@ -1,0 +1,24 @@
+apiVersion: tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: prove-step
+spec:
+  steps:
+    - name: echo
+      image: alpine:latest    # container image
+      script: |
+        #!/bin/sh
+        echo "Hello World"
+
+---
+apiVersion: tekton.dev/v1beta1
+kind: TaskRun
+metadata:
+  name: prove-step
+  annotations:
+    # annotations reserved to Kubernetes core components are allowed to add, although NOT recommended
+    kubernetes.io/example: "invalid"
+spec:
+  taskRef:
+    name: prove-step
+
