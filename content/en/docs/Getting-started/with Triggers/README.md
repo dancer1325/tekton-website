@@ -19,6 +19,7 @@
     * `kubectl apply --filename https://storage.googleapis.com/tekton-releases/triggers/latest/release.yaml`
   * Tekton Triggers Interceptors
     * `kubectl apply --filename https://storage.googleapis.com/tekton-releases/triggers/latest/interceptors.yaml`
+    * Note: Super important to install it for make it run!!
   * Notes
     * Note1: For more details -> Check 'tekton-triggers' repo under '/install'
     * Note2: `kubectl get pods -n tekton-piplines` to check all pods are READY 1/1
@@ -54,5 +55,6 @@
           * `kubectl apply -f triggerBinding.yaml`,
           * `kubectl apply -f rbac.yaml`,
           * `kubectl apply -f eventListener.yaml`
+          * `kubectl port-forward service/el-hello-listener 8080`
           * Note: It must exist some problem in files v1Alpha1 and v1Beta1 -- TODO: Find what
   * `tkn pipelinerun logs pipelineRunName` to check the logs thrown
