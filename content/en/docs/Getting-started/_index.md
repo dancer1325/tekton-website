@@ -13,19 +13,9 @@ Integration and Continuous Delivery/Deployment) solution. Check the [Concepts
 section](/docs/concepts/) to learn more about how Tekton works.
 
 Let's get started! You can go ahead and [create your first task with
-Tekton](/docs/getting-started/tasks/). If you prefer, watch the following
-videos to learn the basics of how Tekton works before your first hands-on
-experience:
+Tekton](/docs/getting-started/tasks/).
 
-{{< card footer="Tekton for Kubernetes explained">}}
-  {{< youtube "6oE7jgRuF2o"  >}}
-{{< /card >}}
-
-{{< card footer="Tekton CI/CD Pipelines overview">}}
-  {{< youtube "pW606eBa7og" >}}
-{{< /card >}}
-
-{{< card footer="Tekton Chains: extensibility, automation, and security">}}
-  {{< youtube "p9K3_xtozzA" >}}
-{{< /card >}}
-
+If you are looking for a Git-native CI/CD experience with Tekton, check out
+[Getting Started with Pipelines-as-Code](https://pipelinesascode.com/docs/getting-started/).
+It lets you define your pipelines in a `.tekton/` directory alongside your
+source code and integrates with GitHub, GitLab, Bitbucket, and more.

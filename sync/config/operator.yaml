@@ -17,6 +17,9 @@ archive: https://github.com/tektoncd/operator/tags
 # To add a new version, append to the list as below
 # - name: vX.Y.Z
 #   displayName: vX.Y.Z
+#   # supportEnds is not used anywhere.
+#   # supportEnds can be used to remove(manually) outdated versions from docs
+#   supportEnds: YYYY-MM-DD 
 #   folders:
 #     docs:
 #       target: ''             # optional, default value ''
@@ -26,8 +29,9 @@ archive: https://github.com/tektoncd/operator/tags
 #       header: <dict>         # optional, no header added if not set
 #         See https://www.docsy.dev/docs/adding-content/navigation/#section-menu
 tags:
-  - name: release-v0.70.x
-    displayName: v0.70.x
+  - name: release-v0.79.x
+    displayName: v0.79.x-LTS
+    supportEnds: "2027-03-05" # YYYY-MM-DD
     # Dict of folders to sync
     folders:
       docs:
@@ -35,8 +39,9 @@ tags:
         include: ['*.md']
         exclude:
           - TektonOperator.md
-  - name: release-v0.69.x
-    displayName: v0.69.x
+  - name: release-v0.78.x
+    displayName: v0.78.x-LTS
+    supportEnds: "2026-12-08" # YYYY-MM-DD
     # Dict of folders to sync
     folders:
       docs:
@@ -44,8 +49,9 @@ tags:
         include: ['*.md']
         exclude:
           - TektonOperator.md
-  - name: release-v0.68.x
-    displayName: v0.68.x
+  - name: release-v0.77.x
+    displayName: v0.77.x-LTS
+    supportEnds: "2026-08-21" # YYYY-MM-DD
     # Dict of folders to sync
     folders:
       docs:
@@ -53,10 +59,39 @@ tags:
         include: ['*.md']
         exclude:
           - TektonOperator.md
-  - name: release-v0.67.x
-    # The name to display on tekton.dev.
-    # helper.py will use this value in the version switcher and other places.
-    displayName: v0.67.x
+  - name: release-v0.76.x
+    displayName: v0.76.x-LTS
+    supportEnds: "2026-02-18" # YYYY-MM-DD
+    # Dict of folders to sync
+    folders:
+      docs:
+        index: README.md
+        include: ['*.md']
+        exclude:
+          - TektonOperator.md
+  - name: release-v0.75.x
+    displayName: v0.75.x-LTS
+    supportEnds: "2026-02-18" # YYYY-MM-DD
+    # Dict of folders to sync
+    folders:
+      docs:
+        index: README.md
+        include: ['*.md']
+        exclude:
+          - TektonOperator.md
+  - name: release-v0.74.x
+    displayName: v0.74.x-LTS
+    supportEnds: "2025-11-22" # YYYY-MM-DD
+    # Dict of folders to sync
+    folders:
+      docs:
+        index: README.md
+        include: ['*.md']
+        exclude:
+          - TektonOperator.md
+  - name: release-v0.73.x
+    displayName: v0.73.x-LTS
+    supportEnds: "2025-10-01" # YYYY-MM-DD
     # Dict of folders to sync
     folders:
       docs:

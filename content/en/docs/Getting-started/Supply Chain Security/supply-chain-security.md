@@ -42,20 +42,15 @@ This guide shows you how to:
    that you are using:
    
    ```
-   😄  minikube v1.29.0
-   ✨  Automatically selected the docker driver. Other choices: none, ssh
-   📌  Using Docker driver with root privileges
-   👍  Starting control plane node minikube in cluster minikube
-   🚜  Pulling base image ...
-   🔥  Creating docker container (CPUs=2, Memory=7900MB) ...
-   🐳  Preparing Kubernetes v1.26.1 on Docker 20.10.23 ...
-       ▪ Generating certificates and keys ...
-       ▪ Booting up control plane ...
-       ▪ Configuring RBAC rules ...
+   😄  minikube v1.36.0 on Darwin 15.5 (arm64)
+   ✨  Using the qemu2 driver based on existing profile
+   👍  Starting "minikube" primary control-plane node in "minikube" cluster
+   🏃  Updating the running qemu2 "minikube" VM ...
+   📦  Preparing Kubernetes v1.33.1 on containerd 1.7.23 ...
    🔗  Configuring bridge CNI (Container Networking Interface) ...
-       ▪ Using image gcr.io/k8s-minikube/storage-provisioner:v5
-   🌟  Enabled addons: storage-provisioner, default-storageclass
    🔎  Verifying Kubernetes components...
+       ▪ Using image gcr.io/k8s-minikube/storage-provisioner:v5
+   🌟  Enabled addons: default-storageclass, storage-provisioner
    🏄  Done! kubectl is now configured to use "minikube" cluster and "default" namespace by default
    ```
 
@@ -67,10 +62,10 @@ This guide shows you how to:
    The output confirms that the registry plugin is enabled:
 
    ```
-   💡  registry is an addon maintained by Google. For any concerns contact minikube on GitHub.
+   💡  registry is an addon maintained by minikube. For any concerns contact minikube on GitHub.
    You can view the list of minikube maintainers at: https://github.com/kubernetes/minikube/blob/master/OWNERS
-       ▪ Using image docker.io/registry:2.8.1
-       ▪ Using image gcr.io/google_containers/kube-registry-proxy:0.4
+       ▪ Using image gcr.io/k8s-minikube/kube-registry-proxy:0.0.9
+       ▪ Using image docker.io/registry:3.0.0
    🔎  Verifying registry addon...
    🌟  The 'registry' addon is enabled
    ```
@@ -97,8 +92,9 @@ Now you can push images to a registry within your minikube cluster.
 
    ```
    NAME                                          READY   STATUS    RESTARTS   AGE
-   tekton-pipelines-controller-9675574d7-sxtm4   1/1     Running   0          2m28s
-   tekton-pipelines-webhook-58b5cbb7dd-s6lfs     1/1     Running   0          2m28s
+   tekton-events-controller-786b59d5cd-jt7d9     1/1     Running   0          2m
+   tekton-pipelines-controller-59b6cdbbc-2kw2w   1/1     Running   0          2m
+   tekton-pipelines-webhook-74b5cdfcc4-g4qj2     1/1     Running   0          2m
    ```
 
    Hit *Ctrl + C* to stop monitoring.
@@ -121,7 +117,7 @@ Now you can push images to a registry within your minikube cluster.
 
    ```
    NAME                                        READY   STATUS    RESTARTS   AGE
-   tekton-chains-controller-57dcc994b9-vs2f2   1/1     Running   0          2m23s
+   tekton-chains-controller-7dccbf8fc7-9wdkl   1/1     Running   0          38s
    ```
 
    Hit *Ctrl + C* to stop monitoring.
@@ -203,33 +199,35 @@ Now you can push images to a registry within your minikube cluster.
    pipelinerun.tekton.dev/build-push-run-q22b5 created 
    ```
 
-1. Use the PipelineRun name, `build-push-run-q22b5` , to monitor the
-   execution:
+1. Monitor the execution:
 
    ```bash
-   tkn pr logs build-push-run-q22b5 -f
+   tkn pr logs --last -f
    ```
 
    The output shows the Pipeline completed successfully:
 
    ```
-   [kaniko-build : build-and-push] INFO[0000] Retrieving image manifest alpine:3.16
-   [kaniko-build : build-and-push] INFO[0000] Retrieving image alpine:3.16 from registry index.docker.io
-   [kaniko-build : build-and-push] INFO[0000] Built cross stage deps: map[]
-   [kaniko-build : build-and-push] INFO[0000] Retrieving image manifest alpine:3.16
-   [kaniko-build : build-and-push] INFO[0000] Returning cached image manifest
-   [kaniko-build : build-and-push] INFO[0000] Executing 0 build triggers
-   [kaniko-build : build-and-push] INFO[0000] Unpacking rootfs as cmd RUN echo "hello world" > hello.log requires it.
-   [kaniko-build : build-and-push] INFO[0000] RUN echo "hello world" > hello.log
-   [kaniko-build : build-and-push] INFO[0000] Taking snapshot of full filesystem...
-   [kaniko-build : build-and-push] INFO[0000] cmd: /bin/sh
-   [kaniko-build : build-and-push] INFO[0000] args: [-c echo "hello world" > hello.log]
-   [kaniko-build : build-and-push] INFO[0000] Running: [/bin/sh -c echo "hello world" > hello.log]
-   [kaniko-build : build-and-push] INFO[0000] Taking snapshot of full filesystem...
-   [kaniko-build : build-and-push] INFO[0000] Pushing image to 10.101.134.48/tekton-test
-   [kaniko-build : build-and-push] INFO[0001] Pushed image to 1 destinations
-
-   [kaniko-build : write-url] 10.101.134.48/tekton-test
+   [kaniko-build : build-and-push] 2025/07/21 22:19:13 ERROR failed to get CPU variant os=linux error="getCPUVariant for OS linux: not implemented"
+   [kaniko-build : build-and-push] INFO[0000] Retrieving image manifest alpine:3.22
+   [kaniko-build : build-and-push] INFO[0000] Retrieving image alpine:3.22 from registry index.docker.io
+   [kaniko-build : build-and-push] INFO[0002] Built cross stage deps: map[]
+   [kaniko-build : build-and-push] INFO[0002] Retrieving image manifest alpine:3.22
+   [kaniko-build : build-and-push] INFO[0002] Returning cached image manifest
+   [kaniko-build : build-and-push] INFO[0002] Executing 0 build triggers
+   [kaniko-build : build-and-push] INFO[0002] Building stage 'alpine:3.22' [idx: '0', base-idx: '-1']
+   [kaniko-build : build-and-push] INFO[0002] Unpacking rootfs as cmd RUN echo "hello world" > hello.log requires it.
+   [kaniko-build : build-and-push] INFO[0005] RUN echo "hello world" > hello.log
+   [kaniko-build : build-and-push] INFO[0005] Initializing snapshotter ...
+   [kaniko-build : build-and-push] INFO[0005] Taking snapshot of full filesystem...
+   [kaniko-build : build-and-push] INFO[0005] Cmd: /bin/sh
+   [kaniko-build : build-and-push] INFO[0005] Args: [-c echo "hello world" > hello.log]
+   [kaniko-build : build-and-push] INFO[0005] Running: [/bin/sh -c echo "hello world" > hello.log]
+   [kaniko-build : build-and-push] INFO[0005] Taking snapshot of full filesystem...
+   [kaniko-build : build-and-push] INFO[0005] Pushing image to 10.99.166.178/tekton-test
+   [kaniko-build : build-and-push] INFO[0007] Pushed 10.99.166.178/tekton-test@sha256:3254d61ef67ceb4dd7906b14bb070c00fa039d70ccebb116f08d4f22127f1cf7
+   
+   [kaniko-build : write-url] 10.99.166.178/tekton-test
    ```
 
 ## Retrieve and verify the artifact provenance
@@ -263,7 +261,7 @@ PipelineRun built and pushed.
    {{% readfile file="samples/provenance.json" code="true" lang="json" %}}
 
 1. To verify that the metadata hasn't been tampered with, check the signature
-   with `cosing`:
+   with `cosign`:
 
    ```bash
    cosign verify-blob-attestation --insecure-ignore-tlog \
@@ -289,6 +287,6 @@ PipelineRun built and pushed.
 [kubectl]: https://kubernetes.io/docs/tasks/tools/#kubectl
 [tkn]: /docs/cli/
 [jq]: https://stedolan.github.io/jq/download/
-[cosign]: https://docs.sigstore.dev/cosign/installation/
+[cosign]: https://docs.sigstore.dev/cosign/system_config/installation/
 [blog-post]: /blog/2023/04/19/getting-to-slsa-level-2-with-tekton-and-tekton-chains/
 

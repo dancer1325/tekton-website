@@ -15,8 +15,8 @@ description: >
 
 Tekton is a cloud-native solution for building CI/CD pipelines. It consists of Tekton Pipelines, which provides
 the building blocks, and of supporting components, such as Tekton CLI and Tekton Catalog, that make Tekton a complete
-ecosystem. Tekton is part of the [CD Foundation](https://cd.foundation/), a
-[Linux Foundation](https://www.linuxfoundation.org/projects/) project.
+ecosystem. Tekton is an incubating project at the [Cloud Native Computing
+Foundation (CNCF)](https://www.cncf.io/).
 
 Tekton installs and runs as an extension on a Kubernetes cluster and comprises a set of Kubernetes Custom Resources
 that define the building blocks you can create and reuse for your pipelines. Once installed, Tekton Pipelines becomes 
@@ -75,17 +75,22 @@ Tekton consists of the following components:
   pattern](https://operatorhub.io/what-is-an-operator) that allows you to
   install, update, and remove Tekton projects on your Kubernetes cluster.
 
-- **[Tekton Chain][chains]** provides tools to generate, store, and sign
+- **[Tekton Chains][chains]** provides tools to generate, store, and sign
   provenance for artifacts built with Tekton Pipelines.
+
+- **[Pipelines-as-Code][pac]** brings a Git-native CI/CD workflow to Tekton,
+  allowing you to define your pipelines in a `.tekton/` directory alongside
+  your source code. It integrates with GitHub, GitLab, Bitbucket, and Forgejo.
 
 [pipelines]: https://github.com/tektoncd/pipeline/blob/main/docs/README.md
 [triggers]: https://github.com/tektoncd/triggers/blob/main/README.md
 [cli]: https://github.com/tektoncd/cli/blob/main/README.md
 [dashboard]: https://github.com/tektoncd/dashboard/blob/main/docs/README.md
-[catalog]: https://github.com/tektoncd/catalog/blob/v1beta1/README.md
+[catalog]: https://github.com/tektoncd/catalog/blob/main/README.md
 [hub]: https://github.com/tektoncd/hub/blob/main/README.md
 [operator]: https://github.com/tektoncd/operator/blob/main/README.md
 [chains]: https://github.com/tektoncd/chains/blob/main/README.md
+[pac]: https://pipelinesascode.com
 [k-resources]: https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/
 
 ## How do I work with Tekton?

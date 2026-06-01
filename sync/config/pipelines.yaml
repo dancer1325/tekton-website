@@ -3,41 +3,13 @@
 # repository of a Tekton component, such as tektoncd/pipelines) to
 # content/ (for the lastest version) and vault/ (for earlier versions).
 
-# The name of the component.
-# sync.py will use this value to build directories in content/ and vault/.
 component: Pipelines
-# The GitHub repository where documentation resides.
 repository: https://github.com/tektoncd/pipeline
-# The link to the GitHub tag page.
 archive: https://github.com/tektoncd/pipeline/tags
-# The tags (versions) of contents to sync.
-# Note that sync.py and related script reads tags in the order specified in
-# the following list; the first entry in tags will automatically become the
-# latest version of contents.
-# To add a new version, append to the list as below
-# - name: vX.Y.Z
-#   displayName: vX.Y.Z
-#   folders:
-#     docs:
-#       target: ''             # optional, default value ''
-#       index: README.md       # optional, if _index.md exists
-#       include: ['*.md']      # optional, default value ['*']
-#       exclude: ['not_in.md'] # optional, default value []
-#       header: <dict>         # optional, no header added if not set
-#         See https://www.docsy.dev/docs/adding-content/navigation/#section-menu
+# See support versions in pipelines releases.md: https://github.com/tektoncd/pipeline/blob/main/releases.md
 tags:
-- name: release-v0.56.x
-  displayName: v0.56.x-LTS
-  folders:
-    docs:
-      index: README.md
-      include: ['*.md']
-      exclude:
-        - api-spec.md
-        - tutorial.md 
-- name: release-v0.53.x
-  displayName: v0.53.x-LTS
-  # Dict of folders to sync
+- name: release-v1.12.x
+  displayName: v1.12.x-LTS
   folders:
     docs:
       index: README.md
@@ -45,9 +17,8 @@ tags:
       exclude:
         - api-spec.md
         - tutorial.md
-- name: release-v0.50.x
-  displayName: v0.50.x-LTS
-  # Dict of folders to sync
+- name: release-v1.9.x
+  displayName: v1.9.x-LTS
   folders:
     docs:
       index: README.md
@@ -55,9 +26,8 @@ tags:
       exclude:
         - api-spec.md
         - tutorial.md
-- name: release-v0.47.x
-  displayName: v0.47.x-LTS
-  # Dict of folders to sync
+- name: release-v1.6.x
+  displayName: v1.6.x-LTS
   folders:
     docs:
       index: README.md
@@ -65,9 +35,8 @@ tags:
       exclude:
         - api-spec.md
         - tutorial.md
-- name: release-v0.44.x
-  displayName: v0.44.x-LTS
-  # Dict of folders to sync
+- name: release-v1.3.x
+  displayName: v1.3.x-LTS
   folders:
     docs:
       index: README.md

@@ -43,14 +43,14 @@ docker-compose rm
 
 ### Prerequisites
 
-* [python3](https://www.python.org/downloads/) 
-* [hugo v0.107.0 (EXTENDED VERSION)](https://github.com/gohugoio/hugo/releases/v0.107.0)
-* [pip](https://pip.pypa.io/en/stable/installing/)
-* [git 1.8.5 or later](https://github.com/git/git/releases)
-* [npm v6.14.5](https://nodejs.org/en/)
-* [node v14.3.0](https://nodejs.org/en/)
-* [netlify cli](https://cli.netlify.com/getting-started)
-* [netlify account](https://app.netlify.com/)
+Please use the **exact versions** specified here otherwise `npm start` will fail.
+
+- [python3](https://www.python.org/downloads/)
+- [hugo v0.107.0 (EXTENDED VERSION)](https://github.com/gohugoio/hugo/releases/v0.107.0)
+- [pip](https://pip.pypa.io/en/stable/installing/)
+- [git 1.8.5 or later](https://github.com/git/git/releases)
+- [npm v10.9.2](https://nodejs.org/en/)
+- [node v22.14.0](https://nodejs.org/en/)
 
 ### Setup
 
@@ -72,7 +72,6 @@ docker-compose rm
    python3 -m venv .venv
    source .venv/bin/activate    
    pip3 install -r requirements.txt
-
    ```
 
 1. Run the sync script
@@ -84,7 +83,7 @@ docker-compose rm
 1. Serve the website locally
 
    ```bash
-   netlify dev
+   npm start
    ```
 
 1. Verify that the website is working
@@ -93,6 +92,10 @@ docker-compose rm
    This opens a local instance of the website, you can now make changes in the
    documentation and those changes will immediately show up in the browser after
    you save.
+
+To debug issues only present in the production build, you can run the Netlify production build locally:
+
+`URL=http://localhost:8888 npx netlify serve`
 
 The `sync.py` script clones the required repositories to a local cache folder, by default `sync/.cache`.
 You can modify content and create commits in your local cache to test changes to the original docs.
