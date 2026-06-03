@@ -8,9 +8,6 @@ description: >
 ---
 -->
 
-Welcome to Tekton. Tekton is an open-source cloud native CICD (Continuous
-Integration and Continuous Delivery/Deployment) solution. Check the [Concepts
-section](/docs/concepts/) to learn more about how Tekton works.
 
 Let's get started! You can go ahead and [create your first task with
 Tekton](/docs/getting-started/tasks/).
