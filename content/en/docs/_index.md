@@ -7,9 +7,15 @@ menu:
     weight: 1
 ---
 
-Tekton is a cloud-native solution for building CI/CD systems. It consists of
-Tekton Pipelines, which provides the building blocks, and of supporting
-components, such as Tekton CLI and Tekton Catalog, that make Tekton a complete
-ecosystem.  Tekton is an incubating project at the [Cloud Native Computing
-Foundation (CNCF)](https://www.cncf.io/). For more
-information, see the [Overview of Tekton](/docs/concepts/overview/).
+* Tekton
+  * == project
+    * CNCF's incubating
+  * == Tekton Pipelines + Tekton CLI + Tekton Catalog
+    * cloud-native
+  * allows
+    * building CI/CD systems
+
+* Tekton Pipelines
+  * provides 
+    * building blocks, and of supporting
+
